@@ -350,7 +350,7 @@ void runRandom(){
 
     vector<vector<double>> distanceVector = getDistanceVector(head, numPucks);
 
-    cout << "\nDistance Vector:" << endl;
+    cout << "\nDistance Vector (in mm):" << endl;
 
     for(int i = 0; i < numPucks; i++){
         for(int j = 0; j < numPucks; j++){
@@ -370,7 +370,7 @@ void runRandom(){
 		cout << x << "," << choices[x] << "\t";
     }
 
-    cout << "\n\nTotal movement distance: " << cost << "\n" << endl;
+    cout << "\n\nTotal movement distance: " << cost << " mm\n" << endl;
 
     move(head, choices);
 
