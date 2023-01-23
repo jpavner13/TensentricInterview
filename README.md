@@ -284,7 +284,7 @@ It will then display the proccess of preforming "work()" on each puck and moving
             Closing gaps:
             Puck 1 -----> Puck 2 -----> Puck 3 -----> Puck 5 -----> Puck 4 -----> Puck 7 -----> Puck 0 -----> Puck 6 -----> NULL -----> 
 
-And finally, it will display the ordered list of all the pucks and their information in the order of the parking spaces that they occupy.
+And finally, it will display the ordered list of all the pucks and their information in the order of the parking spaces that they occupy. "Has Worked?:" will be '1' if the puck has been "worked" on.
 
             Final Arrangement:
             ======================================= Puck 1 =======================================
