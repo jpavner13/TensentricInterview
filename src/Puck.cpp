@@ -18,6 +18,10 @@ bool Puck::getHasWorked(){
     return hasWorked;
 }
 
+void Puck::work(){
+    hasWorked = true;
+}
+
 int Puck::getID(){
     return id;
 }
@@ -159,4 +163,13 @@ void Puck::setSpace(int newSpace){
 
 int Puck::getSpace(){
     return space;
+}
+
+string Puck::getColor(){
+    return color;
+}
+
+void Puck::setColor(string newColor){
+    color = newColor;
+    return;
 }

@@ -7,6 +7,7 @@ class Puck {
         Puck(int ID, int xPos, int Ypos, bool worked);
 
         bool getHasWorked();            // Return True if puck has worked, False if not has worked
+        void work();
 
         int getID();                    // Returns ID of puck instance
         int setID(int newID);                   // Sets ID of puck instance
@@ -25,9 +26,13 @@ class Puck {
         void setSpace(int newSpace);
         int getSpace();
 
+        string getColor();
+        void setColor(string newColor);
+
     private:
         bool hasWorked;                 // Holds True if puck instnace has worked, False if puck instance has not worked
         int id;                         // Holds ID of puck instance
         int cord[2];                    // Array of current XY pos.
         int space = -1;
+        string color = "";
 };
