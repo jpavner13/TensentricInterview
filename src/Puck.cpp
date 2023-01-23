@@ -131,3 +131,32 @@ void Puck::printPuckInfo(){
     }
     return;
 }
+
+void Puck::printArrangedPuckInfo(){
+    string color = PURPLE_TXT;
+    cout << ESC << color << "m" << "======================================= Puck " << id << " =======================================" << RESET << endl;
+    cout << ESC << RED_TXT << "m" << "x Cordinate: " << RESET << cord[0] << endl;
+    cout << ESC << LIGHT_BLUE_TXT << "m" << "y Cordinate: " << RESET << cord[1] << endl;
+    cout << ESC << GREEN_TXT << "m" << "Has Worked?: " << RESET << hasWorked << endl;
+    
+
+    cout << ESC << color << "m" << "=======================================================================================" << RESET << endl;
+    if(id != 9){
+        cout << ESC << color << "m" << "                                                              |   |     " << RESET << endl;
+        cout << ESC << color << "m" << "                                                            \\       /   " << RESET << endl;
+        cout << ESC << color << "m" << "                                                             \\     /    " << RESET << endl;
+        cout << ESC << color << "m" << "                                                              \\   /     " << RESET << endl;
+        cout << ESC << color << "m" << "                                                               \\ /      " << RESET << endl;
+    } else {
+        cout << endl << endl;
+    }
+    return;
+}
+
+void Puck::setSpace(int newSpace){
+    space = newSpace;
+}
+
+int Puck::getSpace(){
+    return space;
+}

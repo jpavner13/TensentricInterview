@@ -20,9 +20,14 @@ class Puck {
         struct Puck* next;
 
         void printPuckInfo();
+        void printArrangedPuckInfo();
+
+        void setSpace(int newSpace);
+        int getSpace();
 
     private:
         bool hasWorked;                 // Holds True if puck instnace has worked, False if puck instance has not worked
         int id;                         // Holds ID of puck instance
         int cord[2];                    // Array of current XY pos.
+        int space = -1;
 };

@@ -7,7 +7,6 @@ using namespace std;
 #include <vector>
 
 #include "Puck.h"
-#include "Grid.h"
 
 #define ESC "\033["
 #define PURPLE_TXT "35"
@@ -16,12 +15,8 @@ using namespace std;
 #define LIGHT_BLUE_TXT "36"
 #define RESET "\033[m"
 
-Puck* createRandInstance(Grid grid){
+Puck* createRandInstance(){
     int numPucks = rand() % 9 + 1;
-
-    Grid currGrid = grid;
-
-    currGrid.setNumPucks(numPucks);
 
     cout << numPucks << " pucks were created." << endl;
 
@@ -54,6 +49,37 @@ void printPucks(Puck* head){
     }
 }
 
+void printArrangedPucks(Puck* head, int numPucks){
+    Puck* currPuck = head;
+    int counter = 0;
+    while(currPuck != NULL){
+        currPuck->printArrangedPuckInfo();
+        currPuck = currPuck -> next;
+        counter++;
+    }
+
+    for(int i = counter; i < 9; i++){
+        string color = PURPLE_TXT;
+        cout << ESC << color << "m" << "======================================= NULL PUCK =======================================" << RESET << endl;
+        cout << ESC << RED_TXT << "m" << "x Cordinate: " << RESET << "NULL" << endl;
+        cout << ESC << LIGHT_BLUE_TXT << "m" << "y Cordinate: " << RESET << "NULL" << endl;
+        cout << ESC << GREEN_TXT << "m" << "Has Worked?: " << RESET << "NULL" << endl;
+        
+
+        cout << ESC << color << "m" << "=======================================================================================" << RESET << endl;
+        if(i + 1 != 9){
+            cout << ESC << color << "m" << "                                                              |   |     " << RESET << endl;
+            cout << ESC << color << "m" << "                                                            \\       /   " << RESET << endl;
+            cout << ESC << color << "m" << "                                                             \\     /    " << RESET << endl;
+            cout << ESC << color << "m" << "                                                              \\   /     " << RESET << endl;
+            cout << ESC << color << "m" << "                                                               \\ /      " << RESET << endl;
+        } else {
+            cout << endl << endl;
+        }
+    }
+    return;
+}
+
 void printMenu(){
     cout << ESC << LIGHT_BLUE_TXT << "m" << "========= Menu =========" << RESET << endl;
     cout << ESC << RED_TXT << "m" << "1: " << RESET << "Run random test" << RESET << endl;
@@ -66,6 +92,7 @@ void printMenu(){
 void move(Puck* head, vector<int> choices){
     int xCords[9] = {420, 300, 180, 180, 300, 420, 420, 300, 180};
     int yCords[9] = {300, 300, 300, 180, 180, 180, 60, 60, 60};
+    int spaces[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     int counter = 0;
     Puck* temp = head;
@@ -74,6 +101,7 @@ void move(Puck* head, vector<int> choices){
         int space = choices[counter];
         temp->setXCord(xCords[space]);
         temp->setYCord(yCords[space]);
+        temp->setSpace(spaces[space]);
         temp = temp->next;
         counter++;
     }
@@ -83,11 +111,10 @@ double getDistance(int xCord1, int xCord2, int yCord1, int yCord2){
     return (double(sqrt(((xCord1 - xCord2)*(xCord1 - xCord2)) + ((yCord1 - yCord2)*(yCord1 - yCord2)))));
 }
 
-vector<vector<double>> getDistanceVector(Puck* head, int numPucks, Grid grid){
+vector<vector<double>> getDistanceVector(Puck* head, int numPucks){
     vector<vector<double>> distanceVector;
 
     Puck* currPuck = head;
-    Grid currGrid = grid;
 
     int xCords[9] = {420, 300, 180, 180, 300, 420, 420, 300, 180};
     int yCords[9] = {300, 300, 300, 180, 180, 180, 60, 60, 60};
@@ -107,8 +134,46 @@ vector<vector<double>> getDistanceVector(Puck* head, int numPucks, Grid grid){
     return distanceVector;
 }
 
-void runRandom(Grid grid){
-    Puck* head = createRandInstance(grid);
+Puck* arrange(Puck* head, int numPucks){
+    Puck* currPuck = head;
+    Puck* tempPuck = NULL;
+    Puck* recPuc = NULL;
+
+    vector<Puck*> pucks;
+
+    int counter = 0;
+
+    for(int i = 0; i <= numPucks; i++){
+        while(currPuck != NULL){
+            if(currPuck -> getSpace() == i){
+                pucks.push_back(currPuck);
+                currPuck = currPuck -> next;
+            } else {
+                currPuck = currPuck -> next;
+            }
+        }
+        currPuck = head;
+    }
+
+    for(int i = 0; i < numPucks; i++){
+        if(i == 0){
+            pucks[i] -> prev = NULL;
+            pucks[i] -> next = pucks[i+1];
+        } else if (i == numPucks - 1){
+            pucks[i] -> prev = pucks[i - 1];
+            pucks[i] -> next = NULL;
+        } else {
+            pucks[i] -> prev = pucks[i - 1];
+            pucks[i] -> next = pucks[i + 1];
+        }
+    }
+
+    tempPuck = pucks[0];
+    return tempPuck;
+}
+
+void runRandom(){
+    Puck* head = createRandInstance();
 
     cout << "Initial state of pucks: " << endl;
     printPucks(head);
@@ -120,7 +185,7 @@ void runRandom(Grid grid){
         counter = counter -> next;
     }
 
-    vector<vector<double>> distanceVector = getDistanceVector(head, numPucks, grid);
+    vector<vector<double>> distanceVector = getDistanceVector(head, numPucks);
 
     cout << "\nDistance Vector:" << endl;
 
@@ -147,13 +212,12 @@ void runRandom(Grid grid){
     move(head, choices);
 
     cout << "After moving puck state: " << endl;
-    printPucks(head);
+    Puck* arrangedPucks = arrange(head, numPucks);
+    printArrangedPucks(arrangedPucks, numPucks);
 }
 
 int main(){
     srand (time(NULL));
-
-    Grid grid;
 
     printMenu();
     int choice;
@@ -161,7 +225,7 @@ int main(){
 
     switch (choice){
         case 1: {
-            runRandom(grid);
+            runRandom();
             break;
         }
         case 2: {
