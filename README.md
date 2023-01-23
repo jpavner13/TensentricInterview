@@ -7,11 +7,11 @@ Although my solution is not nessicarily the easiest way to go about solving this
 
 I wrote this program in c++ since that is the language that Tensentric generally uses. To compile the program, run:
 
-            'g++ -std=c++11 main.cpp Puck.cpp Hungarian.cpp -o run'
+            g++ -std=c++11 main.cpp Puck.cpp Hungarian.cpp -o run
 
 ...and to run the program, run:
 
-            './run'
+            ./run
 
 After running the program, you will be prompted with the following menu:
 
@@ -105,7 +105,7 @@ The first thing it will print is the initial state and cordinates of the created
             Has Worked?: 0
             =======================================================================================
 
-It will then show the distance vector. This is a 2D vector of the distance of each parking spot that should be occupied. The rows are for each puck and the columns are for each parking spot. The vector is filled with the distance between the corrisponding puck and parking spot.
+It will then show the distance vector. This is a 2D vector of the distance of each parking spot that should be occupied from each puck. The rows are for each puck and the columns are for each parking spot. The vector is filled with the distance between the corrisponding puck and parking spot.
 
             Distance Vector (in mm):
             140.431 206.206 306.791 275.465 155.824 38.4838 109.731 186.657
