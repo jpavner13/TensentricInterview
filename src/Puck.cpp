@@ -3,8 +3,12 @@
 
 using namespace std;
 
+
+/*      Undefined constructor */
 Puck::Puck(){}
 
+
+/*      Defined constructor */
 Puck::Puck(int ID, int xPos, int yPos, bool worked){
     id = ID;
     cord[0] = xPos;
@@ -14,18 +18,26 @@ Puck::Puck(int ID, int xPos, int yPos, bool worked){
     next = NULL;
 }
 
+
+/*      Returns true if puck has worked, false if puck has not worked */
 bool Puck::getHasWorked(){
     return hasWorked;
 }
 
+
+/*      Sets hasWorked to true after the puck has done work */
 void Puck::work(){
     hasWorked = true;
 }
 
+
+/*      Returns the puck ID. The Puck ID is the order in wich the pucks were created */
 int Puck::getID(){
     return id;
 }
 
+
+/*      Sets the puck ID. Returns newID if it was successful, returns -1 if ID was out of bounds or if there was an error */
 int Puck::setID(int newID){
     bool success;
     if(newID > 0 && newID < 10){
@@ -50,10 +62,14 @@ int Puck::setID(int newID){
     }
 }
 
+
+/*      Returns current x cordinate of the puck */
 int Puck::getXCord(){
     return cord[0];
 }
 
+
+/*      Sets new x cordinate of puck. Returns newCord if it was successful, returns -1 if cord was out of bounds or if there was an error */
 int Puck::setXCord(int newCord){
     bool success;
 
@@ -79,10 +95,14 @@ int Puck::setXCord(int newCord){
     }
 }
 
+
+/*      Returns current y cordinate of the puck */
 int Puck::getYCord(){
     return cord[1];
 }
 
+
+/*      Sets new y cordinate of puck. Returns newCord if it was successful, returns -1 if cord was out of bounds or if there was an error */
 int Puck::setYCord(int newCord){
     bool success;
 
@@ -108,6 +128,8 @@ int Puck::setYCord(int newCord){
     }
 }
 
+
+// Ansi color code variables used to print command line in color
 #define ESC "\033["
 #define PURPLE_TXT "35"
 #define RED_TXT "31"
@@ -115,6 +137,8 @@ int Puck::setYCord(int newCord){
 #define LIGHT_BLUE_TXT "36"
 #define RESET "\033[m"
 
+
+/*      Prints the current Puck's info to the command line in a way that is easily read by the user */
 void Puck::printPuckInfo(){
     string color = PURPLE_TXT;
     cout << ESC << color << "m" << "======================================= Puck " << id << " =======================================" << RESET << endl;
@@ -136,6 +160,8 @@ void Puck::printPuckInfo(){
     return;
 }
 
+
+/*      Prints the current Puck's info to the command line in a way that is easily read by the user. This is used to solve edge case of there being 9 pucks */
 void Puck::printArrangedPuckInfo(){
     string color = PURPLE_TXT;
     cout << ESC << color << "m" << "======================================= Puck " << id << " =======================================" << RESET << endl;
@@ -157,18 +183,26 @@ void Puck::printArrangedPuckInfo(){
     return;
 }
 
+
+/*      Sets the space number to the given space */
 void Puck::setSpace(int newSpace){
     space = newSpace;
 }
 
+
+/*      Returns the current pucks space number */
 int Puck::getSpace(){
     return space;
 }
 
+
+/*      Returns the ANSI color code of the current puck */
 string Puck::getColor(){
     return color;
 }
 
+
+/*      Sets the current pucks color to the given ANSI color code */
 void Puck::setColor(string newColor){
     color = newColor;
     return;
