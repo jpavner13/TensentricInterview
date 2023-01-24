@@ -514,6 +514,7 @@ int main(){
                 break;
             }
             default: {
+                cout << "Please enter a valid integer between 1 and 3." << endl;
                 break;
             }
         }
