@@ -499,11 +499,13 @@ int main(){
             case 1: {
                 cout << "Running random test..." << endl;
                 runRandom();
+                cout << "Process Complete.\n\n" << endl;
                 break;
             }
             case 2: {
                 cout << "Running manual test..." << endl;
                 runManual();
+                cout << "Process Complete.\n\n" << endl;
                 break;
             }
             case 3: {
