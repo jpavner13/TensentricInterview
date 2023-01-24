@@ -372,5 +372,8 @@ And finally, it will display the ordered list of all the pucks and their informa
             y Cordinate: 60
             Has Worked?: NULL
             =======================================================================================
+
+
+            Process Complete.
       
 It will then bring you back to the menu and allow you to run more tests.
