@@ -1,9 +1,9 @@
 # Tensentric Interview
 This repository contains the code for my solution to the Tensentric Internship coding problem for a summer 2023 internship.
 
-Id like to preface this by saying I had a lot of fun wokring through this problem. I made a few adjustments, assumptions, and improvements to the reccomended path of solving this problem based on the given information. I'm looking forward to discussing them with you on Tuesday, January 24th!
+I'd like to preface this by saying I had a lot of fun working through this problem. I made a few adjustments, assumptions, and improvements to the recommended path of solving this problem based on the given information. I'm looking forward to discussing them with you on Tuesday, January 24th!
 
-Although my solution is not nessicarily the easiest way to go about solving this problem, I wanted to use this opportunity to show off some of my skills including object oriented programming (classes, instances, etc.), data structures, algorithms, pointers, vectors, matricies, command line control and shells, array manipulation, optimization based on physical constraints, string manipulation, refrences, random testing, and abstraction. 
+Although my solution is not necessarily the easiest way to go about solving this problem, I wanted to use this opportunity to show off some of my skills including object oriented programming (classes, instances, etc.), data structures, algorithms, pointers, vectors, matrices, command line control and shells, array manipulation, optimization based on physical constraints, string manipulation, references, random testing, and abstraction. 
 
 I wrote this program in c++ since that is the language that Tensentric generally uses. To compile the program, run:
 
@@ -21,13 +21,13 @@ After running the program, you will be prompted with the following menu:
             3: Quit
             Enter number 1-3.
 
-To make a selection, enter an integer 1 through 3 corrisponding with your choice. Random test will create a random instance for you, while a manual test will walk you through creating an instance with your own numbers. After running a random instance, or finishing creating a manual instance, it will display the output of the function. It will be in the format of the following:
+To make a selection, enter an integer 1 through 3 corresponding with your choice. "Run random test" will create a random instance for you, while "Run manual test" will walk you through creating an instance with your own numbers. After running a random instance, or finishing creating a manual instance, it will display the output of the function. It will be in the format of the following:
 
             Running random test...
             8 pucks were created.
             Initial state of pucks: 
       
-The first thing it will print is the initial state and cordinates of the created pucks.
+The first thing it will print is the initial state and coordinates of the created pucks.
 
             ======================================= Puck 0 =======================================
             x Cordinate: 455
@@ -105,7 +105,7 @@ The first thing it will print is the initial state and cordinates of the created
             Has Worked?: 0
             =======================================================================================
 
-It will then show the distance vector. This is a 2D vector of the distance of each parking spot that should be occupied from each puck. The rows are for each puck and the columns are for each parking spot. The vector is filled with the distance between the corrisponding puck and parking spot.
+It will then show the distance vector. This is a 2D vector of the distance of each puck from each parking spot that should be occupied with a puck. The rows are for each puck and the columns are for each parking spot. The vector is filled with the distance between the corresponding puck and parking spot.
 
             Distance Vector (in mm):
             140.431 206.206 306.791 275.465 155.824 38.4838 109.731 186.657
@@ -117,12 +117,12 @@ It will then show the distance vector. This is a 2D vector of the distance of ea
             226.214 193.01  228.327 142.172 73.0274 138.755 127.016 47.0425
             44.9222 163.518 283.298 312.695 210.376 139.778 256.628 300.962
 
-It will then show the optimal space to move each puck to to minimize the total distance to moved by the pucks. It might not be the closest spot to each puck to optimise movement. The first number is the puck ID, and the second number is the space the puck should be moved to.
+It will then show the optimal space to move each puck to minimize the total distance traveled to move the pucks. It might not be the closest spot to each puck to optimize total distance moved. The first number is the puck ID, and the second number is the space the puck should be moved to.
 
             Optimal Puck-Space movement Vector:
             0,6     1,0     2,1     3,2     4,4     5,3     6,7     7,5
 
-It will then display the total (and minimum possible) distance moved by all of the pucks to the most optimal parking spot.
+It will then display the total (and minimum possible) distance traveled by all of the pucks to the most optimal parking spot.
 
             Total movement distance: 1092.56 mm
       
@@ -215,7 +215,7 @@ It will then display the new state of the pucks with the first puck displayed be
             Has Worked?: NULL
             =======================================================================================
 
-It will then display the proccess of preforming "work()" on each puck and moving them through the parking spaces. 
+It will then display the process of performing "work()" on each puck and moving them through the parking spaces. 
 
             Moving and preforming Work:
             Puck 1 -----> Puck 2 -----> Puck 3 -----> Puck 5 -----> Puck 4 -----> Puck 7 -----> Puck 0 -----> Puck 6 -----> NULL -----> 
@@ -284,7 +284,7 @@ It will then display the proccess of preforming "work()" on each puck and moving
             Closing gaps:
             Puck 1 -----> Puck 2 -----> Puck 3 -----> Puck 5 -----> Puck 4 -----> Puck 7 -----> Puck 0 -----> Puck 6 -----> NULL -----> 
 
-And finally, it will display the ordered list of all the pucks and their information in the order of the parking spaces that they occupy. "Has Worked?:" will be '1' if the puck has been "worked" on.
+And finally, it will display the ordered list of all the pucks and their information in order of the parking spaces that they occupy. "Has Worked?:" will be '1' if the puck has been successfully "worked" on.
 
             Final Arrangement:
             ======================================= Puck 1 =======================================
