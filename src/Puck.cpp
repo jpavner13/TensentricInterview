@@ -5,7 +5,10 @@ using namespace std;
 
 
 /*      Undefined constructor */
-Puck::Puck(){}
+Puck::Puck(){
+    prev = NULL;
+    next = NULL;
+}
 
 
 /*      Defined constructor */

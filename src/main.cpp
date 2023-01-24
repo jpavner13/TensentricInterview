@@ -68,7 +68,7 @@ void printArrangedPucks(Puck* head, int numPucks){
     Puck* currPuck = head;
     int counter = 0;
     while(currPuck != NULL){
-        currPuck->printArrangedPuckInfo();
+        currPuck -> printArrangedPuckInfo();
         currPuck = currPuck -> next;
         counter++;
     }
@@ -199,8 +199,13 @@ Puck* arrange(Puck* head, int numPucks){
 
     for(int i = 0; i < numPucks; i++){
         if(i == 0){
-            pucks[i] -> prev = NULL;
-            pucks[i] -> next = pucks[i+1];
+            if(numPucks != 1){
+                pucks[i] -> prev = NULL;
+                pucks[i] -> next = pucks[i+1];
+            } else {
+                pucks[i] -> prev = NULL;
+                pucks[i] -> next = NULL;
+            }
         } else if (i == numPucks - 1){
             pucks[i] -> prev = pucks[i - 1];
             pucks[i] -> next = NULL;
